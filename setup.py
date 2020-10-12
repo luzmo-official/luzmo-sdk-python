@@ -1,10 +1,7 @@
 import setuptools
 
-with open("README.md", "r") as fh:
-    long_description = fh.read()
-
 setuptools.setup(
-    name="cumulio-pkg",
+    name="cumulio",
     version="0.0.1",
     author="Cumulio Team",
     author_email="team@cumul.io",
