@@ -15,20 +15,20 @@ class Cumulio(object):
         self.PORT = 443
         self.VERSION = "0.1.0"
     
-    def create(self, resource, properties, associations):
+    def create(self, resource, properties, associations = {}):
         query = {}
 
         query["action"]         = "create"
         query["properties"]     = properties
         query["associations"]   = associations
-        self.__emit(resource, "POST", query)
+        return self.__emit(resource, "POST", query)
     
     def get(self, resource, filter):
         query = {}
         
         query["action"] = "get"
         query["find"]   = filter
-        self.__emit(resource, "SEARCH", query)
+        return self.__emit(resource, "SEARCH", query)
 
     def delete(self, resource, id, properties = {}):
         query = {}
@@ -36,7 +36,7 @@ class Cumulio(object):
         query["action"]     = "delete"
         query["id"]         = id
         query["properties"] = properties
-        self.__emit(resource, "DELETE", query)
+        return self.__emit(resource, "DELETE", query)
 
     def update(self, resource, id, properties = {}):
         query = {}
@@ -44,7 +44,7 @@ class Cumulio(object):
         query["action"]     = "update"
         query["id"]         = id
         query["properties"] = properties
-        self.__emit(resource, "PATCH", query)
+        return self.__emit(resource, "PATCH", query)
 
     def associate(self, resource, id, association_role, association_id, properties = {}):
         query       = {}
@@ -56,7 +56,7 @@ class Cumulio(object):
         query["id"]         = id
         query["resource"]   = association
         query["properties"] = properties
-        self.__emit(resource, "LINK", query)
+        return self.__emit(resource, "LINK", query)
     
     def dissociate(self, resource, id, association_role, association_id):
         query       = {}
@@ -67,10 +67,10 @@ class Cumulio(object):
         query["action"]     = "associate"
         query["id"]         = id
         query["resource"]   = association
-        self.__emit(resource, "UNLINK", query)       
+        return self.__emit(resource, "UNLINK", query)       
 
     def query(self, filter = {}):
-        self.get("data", filter)
+        return self.get("data", filter)
 
     def iframe(self, dashboard_id, authorization):
         return self.APP + "/s/" + dashboard_id + "?key=" + authorization["id"] + "&token=" + authorization["token"]
@@ -81,4 +81,5 @@ class Cumulio(object):
         query["version"]    = self.VERSION
 
         url = self.HOST + ':' + str(self.PORT) + '/' + self.VERSION + '/' + resource
-        requests.post(url, headers = {'Content-Type':'application/json'}, data = json.dumps(query))  
+        response = requests.post(url, headers = {'Content-Type':'application/json'}, data = json.dumps(query))
+        return response.json()  
