@@ -22,13 +22,23 @@ class Cumulio(object):
         query["associations"] = associations
         self.__emit(resource, "POST", query)
     
+    def get(self, resource, filter):
+        query = {"action": "get", "find": filter}
+        self.__emit(resource, "SEARCH", query)
+
+    def delete(self, resource, id, properties = {}):
+        query = {}
+        query["action"] = "delete"
+        query["id"] = id
+        query["properties"] = properties
+        self.__emit(resource, "DELETE", query)
+
+    
+
     def __emit(self, resource, action, query):
         query["key"] = self.api_key
         query["token"] = self.api_token
         query["version"] = self.VERSION
 
-        #print(query)
         url = self.HOST + ':' + str(self.PORT) + '/' + self.VERSION + '/' + resource
         x = requests.post(url, headers = {'Content-Type':'application/json'}, data = json.dumps(query))  
-        print(x.url)
-        print(x.text)
