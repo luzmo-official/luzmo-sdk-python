@@ -3,7 +3,7 @@ import json
 
 class Cumulio(object):
     def __init__(self, api_key, api_token):
-        print("initialized cumulio object")
+        print("initializing cumulio client...")
         if not api_key:
             raise Exception("Please provide a valid API Key")
         if not api_token:
@@ -15,6 +15,9 @@ class Cumulio(object):
         self.PORT = 443
         self.VERSION = "0.1.0"
     
+    def help(self):
+        print("Use this Python SDK to create and maintain Cumul.io securables")
+
     def create(self, resource, properties, associations = {}):
         query = {}
 
