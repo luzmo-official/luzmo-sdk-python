@@ -1,1 +1,2 @@
-cumulio/__pycache__/
+*__pycache__/
+dist/

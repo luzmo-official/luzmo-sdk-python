@@ -3,11 +3,11 @@ import json
 
 class Cumulio(object):
     def __init__(self, api_key, api_token):
-        print("initialized cumulio object")
-        if not api_key:
-            raise Exception("Please provide a valid API Key")
-        if not api_token:
-            raise Exception("Please provide a valid API Token")
+        if not api_key or type(api_key) is not str:
+            raise Exception("Please provide a valid API Key of type str")
+        if not api_token or type(api_token) is not str:
+            raise Exception("Please provide a valid API Token of type str")
+        print("initializing cumulio client...")
         self.api_key = api_key
         self.api_token = api_token
         self.APP = "https://app.cumul.io"
@@ -15,6 +15,9 @@ class Cumulio(object):
         self.PORT = 443
         self.VERSION = "0.1.0"
     
+    def help(self):
+        print("Use this Python SDK to create and maintain Cumul.io securables")
+
     def create(self, resource, properties, associations = {}):
         query = {}
 
@@ -81,5 +84,8 @@ class Cumulio(object):
         query["version"]    = self.VERSION
 
         url = self.HOST + ':' + str(self.PORT) + '/' + self.VERSION + '/' + resource
-        response = requests.post(url, headers = {'Content-Type':'application/json'}, data = json.dumps(query))
+        try:
+            response = requests.post(url, headers = {'Content-Type':'application/json'}, data = json.dumps(query))
+        except:
+            print("Something went wrong, please try again later")
         return response.json()  

@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "cumulio"
+version = "0.1.0"
+description = "Cumulio Pthon SDK for the Core API"
+authors = ["Tuana Celik <tuana@cumul.io>"]
+readme = "README.md"
+exclude = ["test/*"]
+include = ["LICENSE"]
+classifiers = [
+    "Topic :: Software Development :: Libraries :: Python Modules"
+]
+packages = [
+    { include = "cumulio"}
+]
+
+[tool.poetry.scripts]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+requests = "^2.25.1"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
