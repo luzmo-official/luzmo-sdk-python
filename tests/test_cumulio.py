@@ -2,14 +2,19 @@ import unittest
 from cumulio.cumulio import Cumulio
 
 class TestCumulio(unittest.TestCase):
-    def test_dummy(self):
-        client = Cumulio(0,2)
-        print(client)
-        print("here")
-        #self.assertRaises .assertEqual(1, 2)
-    
-    def test_dummy2(self):
-        self.assertEqual(2, 2)
+    key = input("Please enter your Cumul.io API Key")
+    token = input("Please enter your Cumul.io API Token")
+
+    def test_create_dataset(self):
+        client = Cumulio(self.key, self.token)
+        dataset = client.create("securable", {"type": "dataset", "name" : {"en":"Test Dataset"}})
+        self.assertIsNotNone(dataset["id"])
+        
+    def test_update_description(self):
+        client2 = Cumulio(self.key, self.token)
+        dataset2 = client2.create("securable", {"type": "dataset", "name" : {"en":"Test Dataset 2"}})
+        response = client2.update("securable", dataset2["id"], {"description":{"en":"Description edited"}})
+        self.assertEqual(response["description"], {"en":"Description edited"})
 
 if __name__ == '__main__':
     print("testing")
