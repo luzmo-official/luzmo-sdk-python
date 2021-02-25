@@ -24,6 +24,7 @@ class Cumulio(object):
         query["action"]         = "create"
         query["properties"]     = properties
         query["associations"]   = associations
+
         return self.__emit(resource, "POST", query)
     
     def get(self, resource, filter):
@@ -76,7 +77,7 @@ class Cumulio(object):
         return self.get("data", filter)
 
     def iframe(self, dashboard_id, authorization):
-        return self.APP + "/s/" + dashboard_id + "?key=" + authorization["id"] + "&token=" + authorization["token"]
+        return self.APP + "/i/" + dashboard_id + "?key=" + authorization["id"] + "&token=" + authorization["token"]
 
     def __emit(self, resource, action, query):
         query["key"]        = self.api_key
@@ -88,4 +89,6 @@ class Cumulio(object):
             response = requests.post(url, headers = {'Content-Type':'application/json'}, data = json.dumps(query))
         except:
             print("Something went wrong, please try again later")
+        if not response.ok:
+            raise Exception(response.reason + ": " + response.json()["message"])
         return response.json()  
