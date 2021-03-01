@@ -90,5 +90,11 @@ class Cumulio(object):
         except:
             print("Something went wrong, please try again later")
         if not response.ok:
-            raise Exception(response.reason + ": " + response.json()["message"])
+            help_message = response.json()["message"]
+            if response.json()["validation"]:
+                for key, value in response.json()["validation"].items():
+                    help_message = help_message + "\n" + key + ": " + value[0]
+            
+            raise Exception(response.reason + ": " + help_message)
+
         return response.json()  
