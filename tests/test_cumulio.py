@@ -7,7 +7,11 @@ class TestCumulio(unittest.TestCase):
 
     def test_create_dataset(self):
         client = Cumulio(self.key, self.token)
-        dataset = client.create("securable", {"type": "dataset", "name" : {"en":"Test Dataset"}})
+        dataset = client.create("securable", 
+        {
+            "type": "dataset", 
+            "name" : {"en":"Test Dataset"}
+        })
         self.assertIsNotNone(dataset["id"])
         
     def test_update_description(self):
@@ -15,6 +19,22 @@ class TestCumulio(unittest.TestCase):
         dataset2 = client2.create("securable", {"type": "dataset", "name" : {"en":"Test Dataset 2"}})
         response = client2.update("securable", dataset2["id"], {"description":{"en":"Description edited"}})
         self.assertEqual(response["description"], {"en":"Description edited"})
+    
+    def test_column_creation(self):
+        client3 = Cumulio(self.key, self.token)
+        dataset3= client3.create("securable", {"type": "dataset", "name" : {"en":"Test Dataset 3"}})
+        client3.create("column", 
+        {
+            "type": 'hierarchy',
+            "format": '',
+            "informat": 'hierarchy',
+            "order": 0,
+            "name": {"nl": 'Type burrito'}
+        }, 
+        [{
+            "role": "securable", 
+            "id": dataset3["id"]
+        }])
 
     def test_exception_handling(self):
         client3 = Cumulio(self.key, self.token)
