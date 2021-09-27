@@ -32,6 +32,14 @@ dataset = client.create("securable", {"type": "dataset", "name" : {"en":"Example
 client.update("securable", dataset[" "], {"description":{"en":"This is an example description"}})
 ```
 
+Optionally for people working with VPC, you can also define a api_host while creating the client. If not it will default to "https://api.cumul.io"
+
+E.g.:
+
+```console
+client = Cumulio(key, token, "Your API host")
+```
+
 Update description of dataset:
 
 ```console
@@ -56,3 +64,7 @@ Replace Values in the column:
 ```console
 client.create("data", {"securable_id": dataset["id"],"type": "replace", "data": [["bitter"], ["salty"]]})
 ```
+
+### Documentation
+
+The API documentation (available services and methods) can be found at https://developer.cumul.io

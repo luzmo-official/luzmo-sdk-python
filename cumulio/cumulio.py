@@ -2,7 +2,7 @@ import requests
 import json
 
 class Cumulio(object):
-    def __init__(self, api_key, api_token):
+    def __init__(self, api_key, api_token, api_host = "https://api.cumul.io"):
         if not api_key or type(api_key) is not str:
             raise Exception("Please provide a valid API Key of type str")
         if not api_token or type(api_token) is not str:
@@ -10,9 +10,7 @@ class Cumulio(object):
         print("initializing cumulio client...")
         self.api_key = api_key
         self.api_token = api_token
-        self.APP = "https://app.cumul.io"
-        self.HOST = "https://api.cumul.io"
-        self.PORT = 443
+        self.HOST = api_host
         self.VERSION = "0.1.0"
     
     def help(self):
@@ -76,15 +74,13 @@ class Cumulio(object):
     def query(self, filter = {}):
         return self.get("data", filter)
 
-    def iframe(self, dashboard_id, authorization):
-        return self.APP + "/i/" + dashboard_id + "?key=" + authorization["id"] + "&token=" + authorization["token"]
-
     def __emit(self, resource, action, query):
         query["key"]        = self.api_key
         query["token"]      = self.api_token
         query["version"]    = self.VERSION
 
-        url = self.HOST + ':' + str(self.PORT) + '/' + self.VERSION + '/' + resource
+        url = self.HOST + '/' + self.VERSION + '/' + resource
+        print(url)
         try:
             response = requests.post(url, headers = {'Content-Type':'application/json'}, data = json.dumps(query))
         except:
