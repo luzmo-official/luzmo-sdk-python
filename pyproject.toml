@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "cumulio"
-version = "0.2.0"
+version = "0.2.1"
 description = "Cumulio Python SDK for the Core API"
 authors = ["Tuana Celik <tuana@cumul.io>"]
 readme = "README.md"
