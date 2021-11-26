@@ -32,12 +32,12 @@ dataset = client.create("securable", {"type": "dataset", "name" : {"en":"Example
 client.update("securable", dataset[" "], {"description":{"en":"This is an example description"}})
 ```
 
-Optionally for people working with VPC, you can also define a api_host while creating the client. If not it will default to "https://api.cumul.io"
+Optionally for people working with VPC or on our US multitenant environment, you can also define an api_host while creating the client. If not it will default to "https://api.cumul.io"
 
 E.g.:
 
 ```console
-client = Cumulio(key, token, "Your API host")
+client = Cumulio(key, token, "https://api.us.cumul.io/")
 ```
 
 Update description of dataset:
