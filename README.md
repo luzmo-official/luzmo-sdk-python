@@ -37,7 +37,7 @@ Optionally for people working with VPC or on our US multitenant environment, you
 E.g.:
 
 ```console
-client = Cumulio(key, token, "https://api.us.cumul.io/")
+client = Cumulio(key, token, "https://api.us.cumul.io")
 ```
 
 Update description of dataset:
