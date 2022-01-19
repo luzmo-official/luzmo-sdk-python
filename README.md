@@ -8,14 +8,9 @@ You will need `Python Version >= 3.6`
 pip install cumulio
 ```
 
-### Development Install
+### Documentation
 
-You can install cumulio this way if you want to modify the source code. You're going to need [Poetry](https://python-poetry.org/): please refer to the Poetry installation documentation in order to install it.
-
-```console
-git clone https://github.com/cumulio/cumulio-sdk-python && cd cumulio-sdk-python
-poetry install
-```
+For detailed documentation, please visit the [Cumul.io Developer Docs](https://developer.cumul.io/)
 
 ### Usage and Examples
 
@@ -39,6 +34,8 @@ E.g.:
 ```console
 client = Cumulio(key, token, "https://api.us.cumul.io")
 ```
+
+There is also the option of adding a dictionary of proxies while creating the API client.
 
 Update description of dataset:
 
