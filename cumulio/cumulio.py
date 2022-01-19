@@ -3,7 +3,7 @@ import json
 
 
 class Cumulio(object):
-    def __init__(self, api_key, api_token, api_host="https://api.cumul.io"):
+    def __init__(self, api_key, api_token, api_host="https://api.cumul.io", proxies=None):
         if not api_key or type(api_key) is not str:
             raise Exception("Please provide a valid API Key of type str")
         if not api_token or type(api_token) is not str:
@@ -11,6 +11,7 @@ class Cumulio(object):
         print("initializing cumulio client...")
         self.api_key = api_key
         self.api_token = api_token
+        self.proxies = proxies
         self.HOST = api_host
         self.VERSION = "0.1.0"
 
@@ -83,7 +84,7 @@ class Cumulio(object):
         url = self.HOST + '/' + self.VERSION + '/' + resource
         try:
             response = requests.post(
-                url, headers={'Content-Type': 'application/json'}, data=json.dumps(query))
+                url, headers={'Content-Type': 'application/json'}, data=json.dumps(query), proxies=self.proxies)
             if not response.ok:
                 help_message = response.json()["message"]
                 if "message" in help_message:
