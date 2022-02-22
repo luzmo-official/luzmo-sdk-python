@@ -68,7 +68,7 @@ class Cumulio(object):
 
         association["role"] = association_role
         association["id"] = association_id
-        query["action"] = "associate"
+        query["action"] = "dissociate"
         query["id"] = id
         query["resource"] = association
         return self.__emit(resource, "UNLINK", query)
