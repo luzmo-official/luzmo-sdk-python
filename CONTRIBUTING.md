@@ -1,6 +1,6 @@
-# Contributing to the Cumul.io Python SDK
+# Contributing to the Luzmo Python SDK
 
-These are mostly guidelines and helpful steps for anyone who wants to contribute to the Cumul.io SDK. Thank you for your time and effort if you're here 🎉
+These are mostly guidelines and helpful steps for anyone who wants to contribute to the Luzmo SDK. Thank you for your time and effort if you're here 🎉
 
 ### Tech Requirements
 
@@ -16,10 +16,10 @@ To make a contribution, the best option is to Fork this repository. Once you hav
 
 ```console
 git clone your-forked-repo
-cd cumulio-sdk-python
+cd luzmo-sdk-python
 poetry install
 ```
 
 ### Create a PR
 
-Once you've made changed that you're happy with, please create a PR back to the `cumulio:master`. Someone from our team will review the changes and if appropriate we will release a new version to [PyPI](https://pypi.org/project/cumulio/).
+Once you've made changed that you're happy with, please create a PR back to the `luzmo:master`. Someone from our team will review the changes and if appropriate we will release a new version to [PyPI](https://pypi.org/project/luzmo/).

@@ -2,13 +2,13 @@ import requests
 import json
 
 
-class Cumulio(object):
-    def __init__(self, api_key, api_token, api_host="https://api.cumul.io", proxies=None):
+class Luzmo(object):
+    def __init__(self, api_key, api_token, api_host="https://api.luzmo.com", proxies=None):
         if not api_key or type(api_key) is not str:
             raise Exception("Please provide a valid API Key of type str")
         if not api_token or type(api_token) is not str:
             raise Exception("Please provide a valid API Token of type str")
-        print("initializing cumulio client...")
+        print("initializing luzmo client...")
         self.api_key = api_key
         self.api_token = api_token
         self.proxies = proxies
@@ -16,7 +16,7 @@ class Cumulio(object):
         self.VERSION = "0.1.0"
 
     def help(self):
-        print("Use this Python SDK to create and maintain Cumul.io securables")
+        print("Use this Python SDK to create and maintain Luzmo securables")
 
     def create(self, resource, properties, associations={}):
         query = {}

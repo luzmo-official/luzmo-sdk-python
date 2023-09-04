@@ -1,18 +1,18 @@
 [tool.poetry]
-name = "cumulio"
+name = "luzmo"
 version = "0.2.3"
-description = "Cumulio Python SDK for the Core API"
-authors = ["Tuana Celik <tuana@cumul.io>"]
+description = "Luzmo Python SDK for the Core API"
+authors = ["Luzmo team <support@luzmo.com>"]
 readme = "README.md"
-homepage = "https://github.com/cumulio/cumulio-sdk-python"
-repository = "https://github.com/cumulio/cumulio-sdk-python"
+homepage = "https://github.com/luzmo/luzmo-sdk-python"
+repository = "https://github.com/luzmo/luzmo-sdk-python"
 exclude = ["test/*"]
 include = ["LICENSE"]
 classifiers = [
     "Topic :: Software Development :: Libraries :: Python Modules"
 ]
 packages = [
-    { include = "cumulio"}
+    { include = "luzmo"}
 ]
 
 [tool.poetry.scripts]

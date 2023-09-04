@@ -1,38 +1,38 @@
-#Cumulio-Python-SDK
+#Luzmo-Python-SDK
 
 ### Python Package
 
 You will need `Python Version >= 3.6`
 
 ```console
-pip install cumulio
+pip install luzmo
 ```
 
 ### Documentation
 
-For detailed documentation, please visit the [Cumul.io Developer Docs](https://developer.cumul.io/)
+For detailed documentation, please visit the [Luzmo Developer Docs](https://developer.luzmo.com/)
 
 ### Usage and Examples
 
-Create a Cumul.io dataset:
+Create a Luzmo dataset:
 
 ```console
-from cumulio.cumulio import Cumulio
+from luzmo.luzmo import Luzmo
 
-key = "Your Cumul.io key"
-token = "Your Cumul.io token"
+key = "Your Luzmo key"
+token = "Your Luzmo token"
 
-client = Cumulio(key, token)
+client = Luzmo(key, token)
 dataset = client.create("securable", {"type": "dataset", "name" : {"en":"Example with python sdk"}})
 client.update("securable", dataset[" "], {"description":{"en":"This is an example description"}})
 ```
 
-Optionally for people working with VPC or on our US multitenant environment, you can also define an api_host while creating the client. If not it will default to "https://api.cumul.io"
+Optionally for people working with VPC or on our US multitenant environment, you can also define an api_host while creating the client. If not it will default to "https://api.luzmo.com"
 
 E.g.:
 
 ```console
-client = Cumulio(key, token, "https://api.us.cumul.io")
+client = Luzmo(key, token, "https://api.us.luzmo.com")
 ```
 
 There is also the option of adding a dictionary of proxies while creating the API client.
@@ -64,4 +64,4 @@ client.create("data", {"securable_id": dataset["id"],"type": "replace", "data": 
 
 ### Documentation
 
-The API documentation (available services and methods) can be found at https://developer.cumul.io
+The API documentation (available services and methods) can be found at https://developer.luzmo.com
