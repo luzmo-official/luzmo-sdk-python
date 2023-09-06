@@ -5,7 +5,7 @@
 You will need `Python Version >= 3.6`
 
 ```console
-pip install luzmo
+pip install luzmo-sdk
 ```
 
 ### Documentation

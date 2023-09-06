@@ -1,11 +1,11 @@
 [tool.poetry]
-name = "luzmo"
-version = "0.2.3"
+name = "luzmo-sdk"
+version = "1.0.0"
 description = "Luzmo Python SDK for the Core API"
-authors = ["Luzmo team <support@luzmo.com>"]
+authors = ["Luzmo team <engineering@luzmo.com>"]
 readme = "README.md"
-homepage = "https://github.com/luzmo/luzmo-sdk-python"
-repository = "https://github.com/luzmo/luzmo-sdk-python"
+homepage = "https://github.com/luzmo-official/luzmo-sdk-python"
+repository = "https://github.com/luzmo-official/luzmo-sdk-python"
 exclude = ["test/*"]
 include = ["LICENSE"]
 classifiers = [
